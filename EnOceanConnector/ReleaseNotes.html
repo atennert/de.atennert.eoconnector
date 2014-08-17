@@ -1,0 +1,53 @@
+<html>
+<head>
+</head>
+<body>
+	<table>
+	<tr>
+    <th>Version</th>
+    <th>Changes</th>
+	</tr>
+  <tr>
+    <td>0.1.0</td>
+    <td>Feature complete base version</td>
+  </tr>
+	<tr>
+	  <td>0.2.0</td>
+	  <td><ul>
+	    <li>changed compiler compliance to 1.7</li>
+	    <li>tons of comments :)</li>
+	    <li>removed PluginClassLoader</li>
+	    <li>removed JarFilenameFilter</li>
+	    <li>removed ConfigFilenameFilter</li>
+	    <li>added IInstanceFilter</li>
+	    <li>added IDistibutor</li>
+	    <li>added ConnectionListenerModel</li>
+	    <li>changed IListener to IEventListener</li>
+	    <li>changed ModelListener to PacketListenerObservable</li>
+      <li>refactored Main</li>
+      <li>refactored PluginLoader</li>
+	    <li>refactored PacketListenerObservable</li>
+	    <li>refactored PacketListenerModel</li>
+	    <li>refactored EventPacket</li>
+	    <li>refactored CommonCommandPacket</li>
+	    <li>refactored RadioPacket</li>
+	    <li>refactored RemoteManCommandPacket</li>
+	    <li>refactored RadioSubTelPacket</li>
+	    <li>refactored SmartAckCommandPacket</li>
+	    <li>refactored ComConnector</li>
+      <li>added break to DistributionHandler in PacketDistributor</li>
+      <li>FacadeSM changed to final and instantiation prohibited</li>
+      <li>changed general constructor of ResponsePacket</li>
+      <li>added constructor to ResponsePacket</li>
+      <li>changed getReturnCode to getRepsonseCode in ResponsePacket</li>
+      <li>added missing constant CO_WR_MODE to CommonCommandPacket</li>
+      <li>fixed error with filling optional data in RadioSubTelPacket</li>
+      <li>added constructor to RadioSubTelPacket</li>
+      <li>removed message logging from ComConnector</li>
+      <li>moved port listener management from ComConnector to PortUpdater</li>
+      <li>added status distribution to ComConnector, with extension in ConnectorFacade and FacadeSM</li>
+	  </ul></td>
+	</tr>
+	</table>
+</body>
+</html>
