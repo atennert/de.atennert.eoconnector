@@ -1,0 +1,21 @@
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+archivesBaseName = "enOceanConnector"
+version = "1.0.0"
+group = "EnOceanConnector"
+description = "Library and application framework for use with EnOcean hardware"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7+'
+    compile 'org.slf4j:slf4j-log4j12:1.7+'
+    compile 'org.bidib.jbidib.org.qbang.rxtx:rxtxcomm:2.2'
+
+    testCompile 'junit:junit:4+'
+}
