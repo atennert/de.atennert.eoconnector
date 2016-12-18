@@ -54,9 +54,11 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ## Release notes
 
-**Version 0.1.0**
+**Version 1.0.0**
 
-Feature complete base version
+* switched from Maven to Gradle
+* changed project path structure
+* updated package name "de.atennert..."
 
 **Version 0.2.0**
 
@@ -93,8 +95,6 @@ Feature complete base version
 * moved port listener management from ComConnector to PortUpdater
 * added status distribution to ComConnector, with extension in ConnectorFacade and FacadeSM
 
-**Version 1.0.0**
+**Version 0.1.0**
 
-* switched from Maven to Gradle
-* changed project path structure
-* updated package name "de.atennert..."
+Feature complete base version
