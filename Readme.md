@@ -56,6 +56,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 **Version 1.0.0**
 
+* added support for upload to jcenter in build.gradle
+
+**Version 1.0.0**
+
 * switched from Maven to Gradle
 * changed project path structure
 * updated package name "de.atennert..."

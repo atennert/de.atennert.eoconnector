@@ -1,15 +1,58 @@
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
 
-sourceCompatibility = 1.8
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
 
-archivesBaseName = "enOceanConnector"
-version = "1.0.0"
-group = "EnOceanConnector"
+apply plugin : 'java'
+apply plugin : 'maven'
+apply plugin : 'maven-publish'
+
+
+archivesBaseName = "enoceanconnector"
+version = "2.1.0"
+group = "de.atennert"
 description = "Library and application framework for use with EnOcean hardware"
 
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = project.archivesBaseName
+            version = project.version
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTREY_KEY')
+    publications = ['MyPublication']
+    publish = true
+    pkg {
+        repo = 'com'
+        name = 'com'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/atennert/de.atennert.eoconnector.git'
+        version {
+            name = project.version
+            desc = project.description
+            released = new Date()
+        }
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
