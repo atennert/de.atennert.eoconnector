@@ -36,8 +36,8 @@ bintray {
     publications = ['MyPublication']
     publish = true
     pkg {
-        repo = 'com'
-        name = 'com'
+        repo = 'enoceanconnector'
+        name = 'enoceanconnector'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/atennert/de.atennert.eoconnector.git'
         version {
