@@ -1,5 +1,9 @@
 # EnOceanConnector
 
+## Status
+__master__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=master)](https://travis-ci.org/atennert/de.atennert.eoconnector) 
+__devel__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=devel)](https://travis-ci.org/atennert/de.atennert.eoconnector)
+
 ## Overview
 
 The EnOceanConnector is a library as well as an application framework for Java projects in which EnOcean messages have to be evaluated in order to communicate with components of an EnOcean-based automation system (http://www.enocean.com). The EnOceanConnector supports the EnOcean Serial Protocol 3 (ESP3). Compatible hardware, which can be used to have access to an EnOcean network, is for instance the USB 300 gateway USB stick. It can be purchased by itself or for instance together with the starter kit ESK 300.
