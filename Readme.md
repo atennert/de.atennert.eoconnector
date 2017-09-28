@@ -1,7 +1,8 @@
 # EnOceanConnector
 
 ## Status
-__master__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=master)](https://travis-ci.org/atennert/de.atennert.eoconnector) 
+__master__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=master)](https://travis-ci.org/atennert/de.atennert.eoconnector)
+ 
 __devel__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=devel)](https://travis-ci.org/atennert/de.atennert.eoconnector)
 
 ## Overview
