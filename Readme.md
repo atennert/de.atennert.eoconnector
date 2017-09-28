@@ -2,7 +2,9 @@
 
 ## Status
 __master__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=master)](https://travis-ci.org/atennert/de.atennert.eoconnector)
- 
+[![Release](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/atennert/de.atennert.eoconnector/releases)
+[![Apache license 2.0](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+
 __devel__: [![Build Status](https://travis-ci.org/atennert/de.atennert.eoconnector.svg?branch=devel)](https://travis-ci.org/atennert/de.atennert.eoconnector)
 
 ## Overview
