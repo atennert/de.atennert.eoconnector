@@ -40,10 +40,10 @@ public void addPacketFactory( IPacketFactory factory )
 public void removePacketFactory( IPacketFactory factory )
 
 // open the connection for receiving and sending (required)
-public void startAcquisition()
+public void startDataAcquisition()
 
 // close the connection (required, ends the used background threads)
-public void stopAcquisition()
+public void stopDataAcquisition()
 
 // used to send packets to the EnOcean network
 public void sendDataPacket( Packet packet )
