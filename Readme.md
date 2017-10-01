@@ -64,11 +64,11 @@ The status closed means the connection to the transceiver is inactive. No data w
 
 The default packet factory can be extended by adding additional factories. The packet factory transforms the received bytes to instances of `Packet`.
 
-With `startAcquisition` the processing of EnOcean messages can be activated. `stopAcquisition` ends the message processing.
+With `startDataAcquisition` the processing of EnOcean messages can be activated. `stopDataAcquisition` ends the message processing.
 
 ## Packets
 
-`Packet`s are representation of the common EnOcean packet data, that is sent through the network. The library contains `Packet` implementations for all message packets from the ESP3 specification:
+`Packet`s are representations of the EnOcean packet data, that is sent through the network. The library contains `Packet` implementations for all message packets from the ESP3 specification:
 
 * CommonCommandPacket
 * EventPacket
