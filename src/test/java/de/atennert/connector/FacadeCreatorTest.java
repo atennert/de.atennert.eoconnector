@@ -1,7 +1,5 @@
 package de.atennert.connector;
 
-import de.atennert.connector.ConnectorFactory;
-import de.atennert.connector.IEnOceanConnector;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
