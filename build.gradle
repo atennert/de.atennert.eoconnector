@@ -15,9 +15,10 @@ apply plugin : 'maven-publish'
 
 
 archivesBaseName = "enoceanconnector"
-version = "1.0.1"
-group = "de.atennert"
+version = "1.1.0"
+group = "de.atennert.connector"
 description = "Library and application framework for use with EnOcean hardware"
+
 
 publishing {
     publications {
@@ -48,17 +49,21 @@ bintray {
     }
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
 repositories {
+    mavenCentral()
     jcenter()
 }
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7+'
     compile 'org.slf4j:slf4j-log4j12:1.7+'
-    compile 'org.bidib.jbidib.org.qbang.rxtx:rxtxcomm:2.2'
+    compile 'org.bidib.jbidib.org.qbang.rxtx:rxtxcomm:2+'
 
     testCompile 'junit:junit:4+'
+    testCompile "org.mockito:mockito-all:1.9+"
 }

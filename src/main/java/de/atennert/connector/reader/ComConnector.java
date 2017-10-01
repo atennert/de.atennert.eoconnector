@@ -1,17 +1,4 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
-
-package org.atennert.connector.reader;
+package de.atennert.connector.reader;
 
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
@@ -29,10 +16,10 @@ import java.util.List;
 import java.util.TooManyListenersException;
 import java.util.concurrent.BlockingQueue;
 
-import org.atennert.connector.IDistributor;
-import org.atennert.connector.IEventListener;
-import org.atennert.connector.packets.Packet;
-import org.atennert.connector.reader.ComConnector.ConnectionStatus;
+import de.atennert.connector.distribution.IDistributor;
+import de.atennert.connector.distribution.IEventListener;
+import de.atennert.connector.packets.Packet;
+import de.atennert.connector.reader.ComConnector.ConnectionStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +64,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
 
     private static final Logger log = LoggerFactory.getLogger(ComConnector.class);
 
-    private final List<IEventListener<ConnectionStatus>> statusListeners = new ArrayList<IEventListener<ConnectionStatus>>();
+    private final List<IEventListener<ConnectionStatus>> statusListeners = new ArrayList<>();
     private ConnectionStatus status;
 
     private final BlockingQueue<Integer> messageByteQueue;
@@ -163,7 +150,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
 
         doRun = true;
 
-        if ( openPort(portName) == true )
+        if ( openPort(portName) )
         {
             log.debug("Connector thread initialized.");
             updateListeners(ConnectionStatus.OPENED);
@@ -199,7 +186,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
      */
     private List<String> getPortNames()
     {
-        final List<String> portNames = new ArrayList<String>();
+        final List<String> portNames = new ArrayList<>();
 
         enumComm = CommPortIdentifier.getPortIdentifiers();
         while ( enumComm.hasMoreElements() )
@@ -243,7 +230,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
         }
 
         Boolean foundPort = false;
-        if ( serialPortOpen != false )
+        if (serialPortOpen)
         {
             log.error("Serial port already opened!");
             return false;
@@ -260,7 +247,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
                 break;
             }
         }
-        if ( foundPort != true )
+        if (!foundPort)
         {
             log.error("Could not find serial port: " + portName);
             return false;
@@ -308,7 +295,7 @@ public class ComConnector implements Runnable, IDistributor<ConnectionStatus>
      */
     private void closePort()
     {
-        if ( serialPortOpen == true )
+        if ( serialPortOpen )
         {
             log.debug("Closing serial port.");
             try

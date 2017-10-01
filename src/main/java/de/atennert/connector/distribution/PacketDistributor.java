@@ -1,17 +1,4 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
-
-package org.atennert.connector.distribution;
+package de.atennert.connector.distribution;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,9 +9,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.atennert.connector.distribution.PacketListenerObservable.ListenerActions;
-import org.atennert.connector.packets.IPacketConstants;
-import org.atennert.connector.packets.Packet;
+import de.atennert.connector.distribution.PacketListenerObservable.ListenerActions;
+import de.atennert.connector.packets.IPacketConstants;
+import de.atennert.connector.packets.Packet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,10 +32,7 @@ public class PacketDistributor {
      * Map with selected packet listeners. They will be initialized and receive
      * packets.
      */
-    private final Map< String, IPacketListener > selectedListeners = new HashMap< String, IPacketListener >();
-
-    /** Map with plug-in properties. */
-    private final Map< String, Properties > properties = new HashMap< String, Properties >();
+    private final Map< String, IPacketListener > selectedListeners = new HashMap<>();
 
     /**
      * This flag contains if the packet evaluation is running or not which is
@@ -59,14 +43,6 @@ public class PacketDistributor {
 
     private final ExecutorService executor = Executors.newFixedThreadPool( 3 );
 
-    private final PacketListenerObservable model;
-    private final BlockingQueue< Packet > sendMessageQueue;
-
-    public PacketDistributor( PacketListenerObservable model, BlockingQueue< Packet > sendMessageQueue ) {
-        this.model = model;
-        this.sendMessageQueue = sendMessageQueue;
-    }
-
     /**
      * Distribute a packet to all active listeners.
      * 
@@ -74,34 +50,8 @@ public class PacketDistributor {
      */
     public synchronized void distributePacket( Packet packet ) {
         if( active && !selectedListeners.isEmpty() ) {
-            executor.execute( new DistributionHandler( packet, new HashSet< IPacketListener >( selectedListeners
+            executor.execute( new DistributionHandler( packet, new HashSet<>( selectedListeners
                     .values() ) ) );
-        }
-    }
-
-    /**
-     * Initialize all listeners that are marked as active.
-     */
-    public synchronized void activateListeners() {
-        if( !active ) {
-            for( final String name : selectedListeners.keySet() ) {
-                selectedListeners.get( name ).initialize( properties.get( name ), sendMessageQueue );
-            }
-            active = true;
-            log.debug( "Activated listeners." );
-        }
-    }
-
-    /**
-     * Close all active listeners.
-     */
-    public synchronized void closeListeners() {
-        if( active ) {
-            for( final IPacketListener l : selectedListeners.values() ) {
-                l.close();
-            }
-            active = false;
-            log.debug( "Stopped listeners." );
         }
     }
 
@@ -110,16 +60,10 @@ public class PacketDistributor {
      * 
      * @param id name (ID) of the packet listener
      * @param listener the packet listener to add
-     * @param properties the properties of the packet listener
      */
-    public synchronized void addListener( String id, IPacketListener listener, Properties properties ) {
+    public synchronized void addListener( String id, IPacketListener listener ) {
         if( !active ) {
             selectedListeners.put( id, listener );
-            this.properties.put( id, properties );
-
-            if( model != null ) {
-                model.listenerEvent( id, ListenerActions.USE );
-            }
         }
     }
 
@@ -131,11 +75,6 @@ public class PacketDistributor {
     public synchronized void removeListener( String id ) {
         if( !active ) {
             selectedListeners.remove( id );
-            properties.remove( id );
-
-            if( model != null ) {
-                model.listenerEvent( id, ListenerActions.UNUSE );
-            }
         }
     }
 
@@ -144,15 +83,7 @@ public class PacketDistributor {
      * their properties.
      */
     public synchronized void clear() {
-        final Set< String > listeners = selectedListeners.keySet();
         selectedListeners.clear();
-        properties.clear();
-
-        if( model != null ) {
-            for( final String id : listeners ) {
-                model.listenerEvent( id, ListenerActions.UNUSE );
-            }
-        }
     }
 
     /**
@@ -186,6 +117,7 @@ public class PacketDistributor {
                      * returns null.
                      */
                     log.warn( "Failed to distribute a packet to a listener!" );
+                    e.printStackTrace();
                 }
             }
         }

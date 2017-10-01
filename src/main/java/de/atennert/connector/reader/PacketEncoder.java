@@ -1,19 +1,6 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
+package de.atennert.connector.reader;
 
-package org.atennert.connector.reader;
-
-import org.atennert.connector.packets.Packet;
+import de.atennert.connector.packets.Packet;
 
 /**
  * This class provides methods to encode instances of {@link Packet} into byte
@@ -21,13 +8,13 @@ import org.atennert.connector.packets.Packet;
  * 
  * @author Andreas Tennert
  */
-public final class PacketEncoder {
+final class PacketEncoder {
 
     /**
      * @param packet a packet representing an EnOcean message
      * @return the byte code for the given packet
      */
-    public static byte[] encodePacket( Packet packet ) {
+    static byte[] encodePacket( Packet packet ) {
         final int[] data = packet.getData();
         final int[] optional = packet.getOptional();
         final int type = packet.type;
