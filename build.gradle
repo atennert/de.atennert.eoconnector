@@ -16,7 +16,7 @@ apply plugin : 'maven-publish'
 
 archivesBaseName = "enoceanconnector"
 version = "1.1.0"
-group = "de.atennert.connector"
+group = "de.atennert"
 description = "Library and application framework for use with EnOcean hardware"
 
 
