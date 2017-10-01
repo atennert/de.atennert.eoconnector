@@ -1,6 +1,5 @@
 package de.atennert.connector.facade;
 
-import com.sun.istack.internal.NotNull;
 import de.atennert.connector.IEnOceanConnector;
 import de.atennert.connector.distribution.IEventListener;
 import de.atennert.connector.distribution.IPacketListener;
@@ -43,11 +42,11 @@ public class ConnectorFacade implements IEnOceanConnector {
      * the main factory and the classes for connecting to the EnOcean
      * transceiver and message distribution.
      */
-    public ConnectorFacade( @NotNull final PacketFactory packetFactory,
-                            @NotNull final PacketDistributor packetDistributor,
-                            @NotNull final ComConnector comConnector,
-                            @NotNull final PacketDecoder packetDecoder,
-                            @NotNull final BlockingQueue<Packet> sendPacketQueue ) {
+    public ConnectorFacade( final PacketFactory packetFactory,
+                            final PacketDistributor packetDistributor,
+                            final ComConnector comConnector,
+                            final PacketDecoder packetDecoder,
+                            final BlockingQueue<Packet> sendPacketQueue ) {
         this.packetFactory = packetFactory;
         this.packetDistributor = packetDistributor;
         this.comConnector = comConnector;
