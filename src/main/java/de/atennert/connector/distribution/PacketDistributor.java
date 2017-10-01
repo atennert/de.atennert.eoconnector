@@ -1,17 +1,4 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
-
-package org.atennert.connector.distribution;
+package de.atennert.connector.distribution;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,9 +9,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.atennert.connector.distribution.PacketListenerObservable.ListenerActions;
-import org.atennert.connector.packets.IPacketConstants;
-import org.atennert.connector.packets.Packet;
+import de.atennert.connector.distribution.PacketListenerObservable.ListenerActions;
+import de.atennert.connector.packets.IPacketConstants;
+import de.atennert.connector.packets.Packet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,10 +32,10 @@ public class PacketDistributor {
      * Map with selected packet listeners. They will be initialized and receive
      * packets.
      */
-    private final Map< String, IPacketListener > selectedListeners = new HashMap< String, IPacketListener >();
+    private final Map< String, IPacketListener > selectedListeners = new HashMap<>();
 
     /** Map with plug-in properties. */
-    private final Map< String, Properties > properties = new HashMap< String, Properties >();
+    private final Map< String, Properties > properties = new HashMap<>();
 
     /**
      * This flag contains if the packet evaluation is running or not which is
@@ -74,7 +61,7 @@ public class PacketDistributor {
      */
     public synchronized void distributePacket( Packet packet ) {
         if( active && !selectedListeners.isEmpty() ) {
-            executor.execute( new DistributionHandler( packet, new HashSet< IPacketListener >( selectedListeners
+            executor.execute( new DistributionHandler( packet, new HashSet<>( selectedListeners
                     .values() ) ) );
         }
     }
@@ -186,6 +173,7 @@ public class PacketDistributor {
                      * returns null.
                      */
                     log.warn( "Failed to distribute a packet to a listener!" );
+                    e.printStackTrace();
                 }
             }
         }

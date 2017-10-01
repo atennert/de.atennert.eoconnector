@@ -1,33 +1,20 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
-
-package org.atennert.connector.facade;
+package de.atennert.connector.facade;
 
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import org.atennert.connector.IEventListener;
-import org.atennert.connector.distribution.IPacketListener;
-import org.atennert.connector.distribution.PacketDistributor;
-import org.atennert.connector.facade.FacadeSM.State;
-import org.atennert.connector.packets.IPacketFactory;
-import org.atennert.connector.packets.Packet;
-import org.atennert.connector.packets.PacketFactory;
-import org.atennert.connector.reader.ComConnector;
-import org.atennert.connector.reader.ComConnector.ConnectionStatus;
-import org.atennert.connector.reader.PacketDecoder;
+import de.atennert.connector.IEventListener;
+import de.atennert.connector.distribution.IPacketListener;
+import de.atennert.connector.distribution.PacketDistributor;
+import de.atennert.connector.facade.FacadeSM.State;
+import de.atennert.connector.packets.IPacketFactory;
+import de.atennert.connector.packets.Packet;
+import de.atennert.connector.packets.PacketFactory;
+import de.atennert.connector.reader.ComConnector;
+import de.atennert.connector.reader.ComConnector.ConnectionStatus;
+import de.atennert.connector.reader.PacketDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

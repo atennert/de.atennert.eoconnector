@@ -1,4 +1,4 @@
-package org.atennert.connector.pluginloader;
+package de.atennert.connector.pluginloader;
 
 /**
  * Interface for filters that are used to filter classes

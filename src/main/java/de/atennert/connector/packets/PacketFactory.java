@@ -1,30 +1,17 @@
-/*******************************************************************************
- * Copyright (C) 2014 Andreas Tennert. This program is free software; you can
- * redistribute it and/or modify it under the terms of the GNU General Public
- * License as published by the Free Software Foundation; either version 2 of the
- * License, or (at your option) any later version. This program is distributed
- * in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even
- * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details. You should have received
- * a copy of the GNU General Public License along with this program; if not,
- * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
- * Boston, MA 02110-1301, USA.
- *******************************************************************************/
-
-package org.atennert.connector.packets;
+package de.atennert.connector.packets;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.atennert.connector.packets.enocean.CommonCommandPacket;
-import org.atennert.connector.packets.enocean.EventPacket;
-import org.atennert.connector.packets.enocean.RadioAdvancedPacket;
-import org.atennert.connector.packets.enocean.RadioPacket;
-import org.atennert.connector.packets.enocean.RadioSubTelPacket;
-import org.atennert.connector.packets.enocean.RemoteManCommandPacket;
-import org.atennert.connector.packets.enocean.ResponsePacket;
-import org.atennert.connector.packets.enocean.SmartAckCommandPacket;
+import de.atennert.connector.packets.enocean.CommonCommandPacket;
+import de.atennert.connector.packets.enocean.EventPacket;
+import de.atennert.connector.packets.enocean.RadioAdvancedPacket;
+import de.atennert.connector.packets.enocean.RadioPacket;
+import de.atennert.connector.packets.enocean.RadioSubTelPacket;
+import de.atennert.connector.packets.enocean.RemoteManCommandPacket;
+import de.atennert.connector.packets.enocean.ResponsePacket;
+import de.atennert.connector.packets.enocean.SmartAckCommandPacket;
 
 /**
  * This factory class creates {@link Packet}s for EnOcean messages. If the
@@ -50,7 +37,7 @@ import org.atennert.connector.packets.enocean.SmartAckCommandPacket;
  */
 public class PacketFactory implements IPacketFactory {
 
-    private final List< IPacketFactory > factories = new ArrayList< IPacketFactory >();
+    private final List< IPacketFactory > factories = new ArrayList<>();
 
     @Override
     public Packet createPacket( int type, int[] data, int[] optional, Date timestamp, boolean isValid ) {
