@@ -3,5 +3,8 @@ notifications:
   email:
     on_success: never
     on_failure: always
-after_success:
-  "gradle --no-daemon bintrayUpload"
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    tags: true
