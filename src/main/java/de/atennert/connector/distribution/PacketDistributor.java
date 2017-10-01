@@ -34,9 +34,6 @@ public class PacketDistributor {
      */
     private final Map< String, IPacketListener > selectedListeners = new HashMap<>();
 
-    /** Map with plug-in properties. */
-    private final Map< String, Properties > properties = new HashMap<>();
-
     /**
      * This flag contains if the packet evaluation is running or not which is
      * mapped to listeners being activated or not. It secures that a
@@ -45,14 +42,6 @@ public class PacketDistributor {
     private boolean active = false;
 
     private final ExecutorService executor = Executors.newFixedThreadPool( 3 );
-
-    private final PacketListenerObservable model;
-    private final BlockingQueue< Packet > sendMessageQueue;
-
-    public PacketDistributor( PacketListenerObservable model, BlockingQueue< Packet > sendMessageQueue ) {
-        this.model = model;
-        this.sendMessageQueue = sendMessageQueue;
-    }
 
     /**
      * Distribute a packet to all active listeners.
@@ -67,46 +56,14 @@ public class PacketDistributor {
     }
 
     /**
-     * Initialize all listeners that are marked as active.
-     */
-    public synchronized void activateListeners() {
-        if( !active ) {
-            for( final String name : selectedListeners.keySet() ) {
-                selectedListeners.get( name ).initialize( properties.get( name ), sendMessageQueue );
-            }
-            active = true;
-            log.debug( "Activated listeners." );
-        }
-    }
-
-    /**
-     * Close all active listeners.
-     */
-    public synchronized void closeListeners() {
-        if( active ) {
-            for( final IPacketListener l : selectedListeners.values() ) {
-                l.close();
-            }
-            active = false;
-            log.debug( "Stopped listeners." );
-        }
-    }
-
-    /**
      * Adds a packet listener to the list of active listeners.
      * 
      * @param id name (ID) of the packet listener
      * @param listener the packet listener to add
-     * @param properties the properties of the packet listener
      */
-    public synchronized void addListener( String id, IPacketListener listener, Properties properties ) {
+    public synchronized void addListener( String id, IPacketListener listener ) {
         if( !active ) {
             selectedListeners.put( id, listener );
-            this.properties.put( id, properties );
-
-            if( model != null ) {
-                model.listenerEvent( id, ListenerActions.USE );
-            }
         }
     }
 
@@ -118,11 +75,6 @@ public class PacketDistributor {
     public synchronized void removeListener( String id ) {
         if( !active ) {
             selectedListeners.remove( id );
-            properties.remove( id );
-
-            if( model != null ) {
-                model.listenerEvent( id, ListenerActions.UNUSE );
-            }
         }
     }
 
@@ -131,15 +83,7 @@ public class PacketDistributor {
      * their properties.
      */
     public synchronized void clear() {
-        final Set< String > listeners = selectedListeners.keySet();
         selectedListeners.clear();
-        properties.clear();
-
-        if( model != null ) {
-            for( final String id : listeners ) {
-                model.listenerEvent( id, ListenerActions.UNUSE );
-            }
-        }
     }
 
     /**

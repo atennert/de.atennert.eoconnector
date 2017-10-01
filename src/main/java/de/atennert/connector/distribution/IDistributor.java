@@ -1,4 +1,4 @@
-package de.atennert.connector;
+package de.atennert.connector.distribution;
 
 /**
  * General interface for all event and state distributors.

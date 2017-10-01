@@ -16,7 +16,7 @@ apply plugin : 'maven-publish'
 
 archivesBaseName = "enoceanconnector"
 version = "1.1.0"
-group = "de.atennert"
+group = "de.atennert.connector"
 description = "Library and application framework for use with EnOcean hardware"
 
 
@@ -65,4 +65,5 @@ dependencies {
     compile 'org.bidib.jbidib.org.qbang.rxtx:rxtxcomm:2+'
 
     testCompile 'junit:junit:4+'
+    testCompile "org.mockito:mockito-all:1.9+"
 }

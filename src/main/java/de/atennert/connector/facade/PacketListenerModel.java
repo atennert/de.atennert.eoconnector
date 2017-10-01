@@ -19,16 +19,14 @@ class PacketListenerModel extends AbstractTransitionModel {
     final PacketDistributor distributor;
     final String id;
     final IPacketListener listener;
-    final Properties properties;
 
     PacketListenerModel( ConnectorFacade facade, PacketDistributor distributor, String id, IPacketListener listener,
-            Properties properties, int action ) {
+            int action ) {
         super( facade );
         this.action = action;
         this.distributor = distributor;
         this.id = id;
         this.listener = listener;
-        this.properties = properties;
     }
 
 }

@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.TooManyListenersException;
 import java.util.concurrent.BlockingQueue;
 
-import de.atennert.connector.IDistributor;
-import de.atennert.connector.IEventListener;
+import de.atennert.connector.distribution.IDistributor;
+import de.atennert.connector.distribution.IEventListener;
 import de.atennert.connector.packets.Packet;
 import de.atennert.connector.reader.ComConnector.ConnectionStatus;
 import org.slf4j.Logger;

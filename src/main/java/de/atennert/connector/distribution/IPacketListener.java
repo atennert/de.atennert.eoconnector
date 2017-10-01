@@ -24,21 +24,6 @@ public interface IPacketListener {
     void receivePacket( Packet packet );
 
     /**
-     * Initialize the listener. This can be used to set up the plugin back-end.
-     * 
-     * @param properties Available properties for listener, may be
-     *            <code>null</code>
-     * @param sendMessageQueue Queue for sending EnOcean data packets
-     */
-    void initialize( Properties properties,
-            BlockingQueue< Packet > sendMessageQueue );
-
-    /**
-     * Close the listener. Tear down the plugin back-end.
-     */
-    void close();
-
-    /**
      * @return the supported packet types of the listener or
      *         {@link IPacketConstants#TYPE_ANY} if the listener supports all
      *         packet types.

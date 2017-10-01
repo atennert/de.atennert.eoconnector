@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import de.atennert.connector.IDistributor;
-import de.atennert.connector.IEventListener;
 import de.atennert.connector.distribution.PacketListenerObservable.ListenerAction;
 
 /**

@@ -1,13 +1,11 @@
 package de.atennert.connector.facade;
 
-import de.atennert.connector.IDistributor;
-import de.atennert.connector.IEventListener;
+import de.atennert.connector.distribution.IDistributor;
+import de.atennert.connector.distribution.IEventListener;
 import de.atennert.connector.reader.ComConnector.ConnectionStatus;
 
 /**
  * This model class is used to add or remove a connection listener.
- * 
- * @author Andreas Tennert
  */
 class ConnectionListenerModel extends AbstractTransitionModel {
 

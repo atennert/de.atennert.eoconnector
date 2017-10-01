@@ -2,8 +2,8 @@ package de.atennert.connector.facade;
 
 import java.util.List;
 
-import de.atennert.connector.IDistributor;
-import de.atennert.connector.IEventListener;
+import de.atennert.connector.distribution.IDistributor;
+import de.atennert.connector.distribution.IEventListener;
 
 /**
  * This model class is used to add or remove a serial port listener.
