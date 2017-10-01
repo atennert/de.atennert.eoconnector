@@ -15,6 +15,12 @@ The EnOceanConnector is a library for Java projects in which EnOcean messages ha
 
 The EnOceanConnector converts received data packets using so called factories in packet objects, that can be further evaluated as needed. The packet objects differ according to the message type and are distributed to listeners by a distributor instance. Packets can be sent to the EnOcean network. The receiving an sending of messages is handled by the connector.
 
+## Include the library into your project
+
+You can download the library directly from Github or Bintray or use a build management system. For using the second, the use of the jcenter repository is required.
+
+The up-to-date dependency snippets are shown on bintray: [ ![Download](https://api.bintray.com/packages/atennert/enoceanconnector/enoceanconnector/images/download.svg) ](https://bintray.com/atennert/enoceanconnector/enoceanconnector/_latestVersion)
+
 ## Use of the library
 
 To use the functions of the EnOceanConnector library, an instance of `IEnOceanConnector` needs to be created. The instance can be retrieved by calling `ConnectorFactory.createConnector()`. This will initialize all EnOceanConnector resources. The returned class provides the functionality to use those resources. The methods are as follows:
